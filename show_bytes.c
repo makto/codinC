@@ -3,6 +3,7 @@
  * 用来可视化数据对象的字节表示 */
 
 #include <stdio.h>
+#include <string.h>
 
 typedef unsigned char *byte_pointer;
 
@@ -32,12 +33,13 @@ void test_show_bytes(int val){
     show_int(ival);
     show_float(fval);
     show_pointer(pval);
-    byte_pointer valp = (byte_pointer) &val;
-    show_bytes(valp, 1);
-    show_bytes(valp, 2);
 }
 
 int main(){
     test_show_bytes(12345);
+
+    const char *s = "abcdef";
+    show_bytes((byte_pointer)s, strlen(s));
+
     return 0;
 }
